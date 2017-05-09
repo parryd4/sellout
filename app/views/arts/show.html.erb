@@ -1,0 +1,27 @@
+<h1><%= @art.title %></h1>
+<h2>By: <%= link_to @art.user.username, user_path(@art.user) %></h2>
+<h3>Price: <%= @art.price %></h3>
+<label>Description</label>
+<p><%= @art.description %></p>
+
+<label>New Comment</label>
+<%= form_for Comment.new do |f| %>
+<%= f.text_area :content %>
+<%= f.hidden_field :art_id, value: @art.id %>
+<%= f.hidden_field :user_id, value: session[:user_id] %>
+<%= f.submit 'Post Comment' %>
+<% end %>
+
+
+<h2>Comments</h2>
+<% @art.comments.each do |comment| %>
+  <p>
+    <%= link_to comment.user.username, user_path(comment.user) %> said... <br>
+    <%= comment.content %>
+    <% if session[:user_id] == comment.user_id %>
+      <%= link_to 'Delete', comment_path(comment), method: 'delete' %>
+    <% end %>
+  </p>
+<% end %>
+
+<p><%= link_to 'Back', arts_path %></p>
