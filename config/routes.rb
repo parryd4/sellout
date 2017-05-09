@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :arts
   resources :users
 
-  root( 'arts#index' )
+  root( 'welcome#index' )
 
   get '/login', to: 'sessions#new', as: 'login'
   post '/sessions', to: 'sessions#create'

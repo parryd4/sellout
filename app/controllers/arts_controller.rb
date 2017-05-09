@@ -22,9 +22,15 @@ class ArtsController < ApplicationController
     @art = Art.find(params[:id])
   end
 
+  def update
+    @art = Art.find(params[:id])
+    @art.update(art_params)
+    redirect_to art_path(@art)
+  end
+
   private
 
   def art_params
-    params.require(:art).permit(:title, :price, :description, :user_id )
+    params.require(:art).permit(:title, :price, :description, :user_id, :category_id)
   end
 end
