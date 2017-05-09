@@ -1,7 +1,7 @@
 <h1>All Arts</h1>
 <ul>
   <% @arts.each do |art| %>
-    <li><%= link_to art.title, art_path(art) %></li>
+    <li><%= link_to art.title, art_path(art) %> - <%= link_to art.user.username, user_path(art.user) %></li>
   <% end %>
 </ul>
 <br>

@@ -7,6 +7,5 @@ class Art < ApplicationRecord
 
   has_many :user_art_views
 
-  has_many :art_categories
-  has_many :categories, through: :art_categories
+  belongs_to :category
 end

@@ -1,5 +1,6 @@
 <h1><%= @art.title %></h1>
 <h2>By: <%= link_to @art.user.username, user_path(@art.user) %></h2>
+<p><%= @art.category.name %>
 <h3>Price: <%= @art.price %></h3>
 <label>Description</label>
 <p><%= @art.description %></p>
