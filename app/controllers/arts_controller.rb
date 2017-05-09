@@ -18,6 +18,10 @@ class ArtsController < ApplicationController
     redirect_to arts_path
   end
 
+  def edit
+    @art = Art.find(params[:id])
+  end
+
   private
 
   def art_params

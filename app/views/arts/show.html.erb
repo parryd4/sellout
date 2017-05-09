@@ -3,6 +3,9 @@
 <h3>Price: <%= @art.price %></h3>
 <label>Description</label>
 <p><%= @art.description %></p>
+<% if @art.user_id == session[:user_id] %>
+  <%= link_to 'Edit', edit_art_path(@art) %>
+<% end %>
 
 <label>New Comment</label>
 <%= form_for Comment.new do |f| %>
