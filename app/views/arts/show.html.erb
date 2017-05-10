@@ -1,7 +1,9 @@
 <h1><%= @art.title %></h1>
 <h2>By: <%= link_to @art.user.username, user_path(@art.user) %></h2>
 <p><%= @art.category.name %>
-<h3>Price: <%= @art.price %></h3>
+
+<h3>Price: <%= @art.price %> <%= link_to "Place Bid", new_art_transaction_path(@art) %></h3>
+
 <label>Description</label>
 <p><%= @art.description %></p>
 <% if @art.user_id == session[:user_id] %>

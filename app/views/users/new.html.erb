@@ -1,6 +1,13 @@
 <%= form_for :user, url: '/users' do |f| %>
-Username: <%= f.text_field :username %>
-Password: <%= f.password_field :password %>
-Password Confirmation: <%= f.password_field :password_confirmation %>
+Username: <%= f.text_field :username %><br>
+<br>
+Password: <%= f.password_field :password %><br>
+<br>
+Password Confirmation: <%= f.password_field :password_confirmation %><br>
+<br>
+Tell us about yourself, sellout. <%= f.text_area :bio %><br>
+<br>
+Where are you located? <%= f.text_field :location %> <br>
+<br>
 <%= f.submit "Begin Your Sellout Journey--and make the world a better place!" %>
 <% end %>
