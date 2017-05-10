@@ -7,10 +7,37 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-10.times do {
+10.times {
+  random_name = "#{Faker::Hipster.word}#{SecureRandom.random_number(999)}"
+  User.create(
+    username: random_name,
+    password: "1",
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    location: 'Manhattan',
+    bio: Faker::Hipster.paragraph(2,true,3)
+  )
+}
 
-  User.create (
-    
+30.times {
+  random_user_id = SecureRandom.random_number(User.last.id) + 1
+  random_category_id = SecureRandom.random_number(Category.last.id) + 1
+  random_price = SecureRandom.random_number(10000)/100.00
+  Art.create(
+    title: Faker::Lorem.sentence(2,true,2),
+    price: 10 + random_price,
+    description: Faker::Hipster.paragraph(2,true,0),
+    user_id: random_user_id,
+    category_id: random_category_id
+  )
+}
 
+500.times {
+  random_user_id = SecureRandom.random_number(User.last.id) + 1
+  random_art_id = SecureRandom.random_number(Art.last.id) + 1
+  Comment.create(
+    content: Faker::Hipster.paragraph(0,true,10),
+    user_id: random_user_id,
+    art_id: random_art_id
   )
 }
