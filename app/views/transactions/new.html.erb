@@ -1,0 +1,16 @@
+<h1>Place New Bid</h1>
+
+<h3>Place Bid on: <%= @art.title %></h3>
+
+<%= form_for :transactions, url:"/arts/:art_id/transactions" do |f|%>
+<%= f.label "Current Bid: $#{@art.price}" %><br>
+<!--<%= f.label "Place Your Bid: $" %>-->
+<!--<%= f.number_field :bid_price, min: @art.price, value: @art.price, step: "#{@art.price * 0.05}" %><br>-->
+<!--<% new_price = (@art.price += @art.price * 0.05).round(2) %>-->
+<%= f.label "Bid $#{new_price}" %>
+<%= f.check_box :bid_price, {}, new_price, @art.price %><br>
+<%= f.submit "Place your bid" %>
+<%= f.hidden_field :art_id, value: @art.id %>
+<%= f.hidden_field :bidder_id, value: session[:user_id] %>
+<%= f.hidden_field :artist_id, value: @art.user.id %>
+<%end%>
