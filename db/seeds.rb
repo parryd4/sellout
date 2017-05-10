@@ -32,7 +32,7 @@ require 'faker'
   )
 }
 
-100.times {
+500.times {
   random_user_id = SecureRandom.random_number(User.last.id) + 1
   random_art_id = SecureRandom.random_number(Art.last.id) + 1
   Comment.create(
