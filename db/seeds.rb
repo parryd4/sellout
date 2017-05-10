@@ -16,6 +16,14 @@ User.create(
   bio: "He who dares wins, and I dared to merge with master"
 )
 
+category_list = [
+  "Drawing", "Painting", "Sculpture", "Ceramics", "Photography",
+  "Conceptual", "Architecture", "Performance", "Taxidermy",
+  "Mixed Media",  "Tapestry", "Wood Carving", "Print", "Graffiti",
+  "Illuminated Manuscript", "Varieties of Glass", "Lithography",
+  "Charcoal", "Computer Art", "Digital", "Hotel Art", "Water Closet",
+]
+category_list.each {|cat| Category.create(name: cat)}
 
 19.times {
   random_name = "#{Faker::Hipster.word}#{SecureRandom.random_number(999)}"
