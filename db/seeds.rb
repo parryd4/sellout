@@ -7,7 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-10.times {
+User.create(
+  username: "dp",
+  password: "1",
+  first_name: "Dan",
+  last_name: "P",
+  location: "NJ",
+  bio: "He who dares wins, and I dared to merge with master"
+)
+
+
+19.times {
   random_name = "#{Faker::Hipster.word}#{SecureRandom.random_number(999)}"
   User.create(
     username: random_name,
@@ -19,7 +29,7 @@ require 'faker'
   )
 }
 
-30.times {
+50.times {
   random_user_id = SecureRandom.random_number(User.last.id) + 1
   random_category_id = SecureRandom.random_number(Category.last.id) + 1
   random_price = SecureRandom.random_number(10000)/100.00
