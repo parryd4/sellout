@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,500" rel="stylesheet">
-
     <style>
     h1, h2 {
     	font-family: Lobster;
@@ -53,6 +52,16 @@
 
 
     <section id="content" class="flex-container">
+      <% if @user.pending_transactions.size > 0 %>
+        <h2>Pending Transactions Awaiting Approval!</h2>
+        <% @user.pending_transactions.each do |trans| %>
+        <p>
+          <%= link_to "#{trans.user.username} bid $#{trans.bid_price} on  #{trans.art.title}", art_transaction_path(trans) %>
+        </p>
+        <% end %>
+
+      <% end %>
+
       <ul>
       <h1><%= @user.username %></h1><br>
       <h2>AKA <%= @user.first_name %> <%= @user.last_name %></h2>
@@ -65,7 +74,6 @@
       </p>
       <% end %>
 
-      <%= link_to 'Home', arts_path %><br>
     </ul>
     </section>
   </body>
