@@ -77,8 +77,9 @@
 
 <section class="flex-container">
   <ul>
-    <%= flash[:notice] %>
+
     <h1><%= @art.title %></h1>
+    <%= image_tag @art.image_url %>
     <h2>By: <%= link_to @art.user.username, user_path(@art.user) %></h2>
     <p><div id="labels">Category: </div><%= @art.category.name %>
 
@@ -93,9 +94,9 @@
 
     <label>New Comment</label>
     <%= form_for Comment.new do |f| %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, cols: 50, rows: 4 %>
     <%= f.hidden_field :art_id, value: @art.id %>
-    <%= f.hidden_field :user_id, value: session[:user_id] %>
+    <%= f.hidden_field :user_id, value: session[:user_id] %><br>
     <%= f.submit 'Post Comment' %>
     <% end %>
     <br>
