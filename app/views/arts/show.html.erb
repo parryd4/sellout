@@ -1,4 +1,8 @@
+<%= flash[:notice] %>
 <h1><%= @art.title %></h1>
+
+<%= image_tag @art.image_url %>
+
 <h2>By: <%= link_to @art.user.username, user_path(@art.user) %></h2>
 <p><%= @art.category.name %>
 
@@ -6,9 +10,12 @@
 
 <label>Description</label>
 <p><%= @art.description %></p>
-<% if @art.user_id == session[:user_id] %>
-  <%= link_to 'Edit', edit_art_path(@art) %>
-<% end %>
+
+<h2>
+  <% if @art.user_id == session[:user_id] %>
+    <%= link_to 'Click to Edit', edit_art_path(@art) %>
+  <% end %>
+</h2>
 
 <label>New Comment</label>
 <%= form_for Comment.new do |f| %>
@@ -22,12 +29,22 @@
 <h2>Comments</h2>
 <% @art.comments.each do |comment| %>
   <p>
-    <%= link_to comment.user.username, user_path(comment.user) %> said... <br>
-    <%= comment.content %>
     <% if session[:user_id] == comment.user_id %>
-      <%= link_to 'Delete', comment_path(comment), method: 'delete' %>
+    You said...
+      <%= link_to 'Edit', edit_comment_path(comment) %>
+      <%= link_to 'Delete', comment_path(comment), method: 'delete' %><br>
+    <% else %>
+      <%= link_to comment.user.username, user_path(comment.user) %> said... <br>
+    <% end %>
+    <% if comment.updated_at == comment.created_at %>
+      <%= "Posted: #{comment.created_at}" %>
+    <% else %>
+      <%= "Edited: #{comment.updated_at}" %>
+
     <% end %>
   </p>
+    <%= comment.content %>
+
 <% end %>
 
 <p><%= link_to 'Back', arts_path %></p>

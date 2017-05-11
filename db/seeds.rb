@@ -10,11 +10,14 @@ require 'faker'
 User.create(
   username: "dp",
   password: "1",
+  password_confirmation: "1",
   first_name: "Dan",
   last_name: "P",
   location: "NJ",
   bio: "He who dares wins, and I dared to merge with master"
 )
+
+
 
 category_list = [
   "Drawing", "Painting", "Sculpture", "Ceramics", "Photography",
@@ -32,11 +35,12 @@ category_list.each {|cat| Category.create(name: cat)}
     password: "1",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    location: 'Manhattan',
+    location: Faker::Pokemon.location,
     bio: Faker::Hipster.paragraph(2,true,3)
   )
 }
 
+count = 0
 50.times {
   random_user_id = SecureRandom.random_number(User.last.id) + 1
   random_category_id = SecureRandom.random_number(Category.last.id) + 1
@@ -44,17 +48,19 @@ category_list.each {|cat| Category.create(name: cat)}
   Art.create(
     title: Faker::Lorem.sentence(2,true,2),
     price: 10 + random_price,
-    description: Faker::Hipster.paragraph(2,true,0),
+    description: Faker::Hipster.paragraph(2,true,1),
     user_id: random_user_id,
-    category_id: random_category_id
+    category_id: random_category_id,
+    image_url: "#{count % 5}.jpg"
   )
+  count += 1
 }
 
 500.times {
   random_user_id = SecureRandom.random_number(User.last.id) + 1
   random_art_id = SecureRandom.random_number(Art.last.id) + 1
   Comment.create(
-    content: Faker::Hipster.paragraph(0,true,10),
+    content: Faker::Hipster.paragraph(1,true,9),
     user_id: random_user_id,
     art_id: random_art_id
   )

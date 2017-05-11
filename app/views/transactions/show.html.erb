@@ -1,0 +1,12 @@
+<%= link_to @transaction.user.username, user_path(@transaction.user) %><br>
+Bid: <%= @transaction.bid_price %> on <%= link_to @transaction.art.title, art_path(transaction.art) %><br>
+Price Was: <%= @transaction.art.price %><br>
+
+<%= link_to @transaction.bid_price, user_path(@transaction.user) %>
+<%= link_to @transaction.user.name, user_path(@transaction.user) %>
+
+<!-- <%= form_for @transaction do |f| %> -->
+
+
+
+<% end %>

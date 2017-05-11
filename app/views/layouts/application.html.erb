@@ -10,10 +10,16 @@
 
   <body>
     <% if logged_in? %>
-      <p>Hello! <%= link_to current_user.username, user_path(current_user) %>. Click here to <%= link_to "Log Out", logout_path, method: 'delete' %></p>
+      <p>Hello <%= link_to current_user.first_name, user_path(current_user) %>! Click here to <%= link_to "Log Out", logout_path, method: 'delete' %></p>
     <% else %>
       <%= link_to 'Login', login_path %>
     <% end %><br><br><br>
     <%= yield %>
+    <br><br>
+    <h2>
+      <%= link_to "ARTS", arts_path %>
+      <%= link_to "USERS", users_path %>
+      <%= link_to "CATEGORIES", categories_path %>
+    </h2>
   </body>
 </html>

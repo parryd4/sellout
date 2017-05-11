@@ -1,0 +1,7 @@
+<h3>Edit your comment</h3>
+<%= form_for @comment do |f| %>
+<%= f.text_area :content %>
+<%= f.hidden_field :art_id, value: @comment.art_id %>
+<%= f.hidden_field :user_id, value: session[:user_id] %>
+<%= f.submit %>
+<% end %>

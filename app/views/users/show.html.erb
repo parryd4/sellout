@@ -1,10 +1,24 @@
 <h1><%= @user.username %></h1>
-<p><%= @user.bio %></p>
 
-<h2>Arts</h2>
-<% @user.arts.each do |art| %>
-<p> <%= link_to art.title, art_path(art) %>
-</p>
+<% if @user.pending_transactions.size > 0 %>
+  <h2>Pending Transactions Awaiting Approval!</h2>
+  <% @user.pending_transactions.each do |trans| %>
+  <p>
+    <%= link_to "#{trans.user.username} bid $#{trans.bid_price} on  #{trans.art.title}", art_transaction_path(trans) %>
+  </p>
+  <% end %>
+
 <% end %>
 
-<%= link_to 'Home', arts_path %>
+<h2>AKA <%= @user.first_name %> <%= @user.last_name %></h2>
+<p>Selling Out from: <%= @user.location %></p>
+<h3>About Me</h3>
+<p><%= @user.bio %></p>
+
+
+<h2><%= "Your " if current_user == @user %>Arts</h2>
+<% @user.arts.each do |art| %>
+  <p>
+    <%= link_to art.title, art_path(art) %>
+  </p>
+<% end %>
