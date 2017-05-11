@@ -1,4 +1,104 @@
-<h1>SellOut!</h1>
-<p>So you're trying to make a buck off your art/handicrafts, huh?</p>
-<p><%= link_to "Join", new_user_path %> the club.</p>
-<p>Or, if you've already sold out, <%= link_to "sign in.", login_path %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SellOut</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500" rel="stylesheet">
+
+    <style>
+
+
+    .logo{
+      display: flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+
+    .flex-container {
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        margin-top: 3%;
+        background: #222;
+        background:rgba(255,255,255,0.7);  /* grey with opacity */
+        color: #000;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 300;
+        font-size: 1.25em;
+        border-radius: 10px;
+        padding: 10px 10px;
+        width: 80%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .flex-container-other {
+           display: -webkit-box;
+           display: -moz-box;
+           display: -ms-flexbox;
+           display: -webkit-flex;
+           display: flex;
+           -webkit-flex-flow: row wrap;
+           flex-flow: row wrap;
+           justify-content:space-between;
+           align-items:center;
+           font-weight: bold;
+       }
+
+       .flex-items {
+           display: flex;
+           justify-content:center;
+           align-items:center;
+           background: #222;
+           background:rgba(255,255,255,0.7); /* grey with opacity */
+           color: #000;
+           font-family: 'Source Sans Pro', sans-serif;
+           font-weight: 200;
+           border-radius: 10px;
+           margin-top: 3%;
+           margin-left: auto;
+           margin-right: auto;
+           padding: 10px 10px;
+           line-height: 1.5em;
+           font-size: 1.75em;
+           width: 30%;
+           height: 75px;
+       }
+
+
+
+    </style>
+  </head>
+  <body>
+    <section id="logo" class="logo">
+    <%=image_tag "sellout_logo.png" %>
+  </section>
+
+<section id="content" class="flex-container">
+    <div class="container-sign-in">
+
+
+    <p>Starving artist? Starve no more and become a sellout.</p>
+  </section>
+
+<section id="other-content" class="flex-container-other">
+  <div id="div-1" class="flex-items">
+    <p><b><%= link_to "Join", new_user_path %></b> the club.</p>
+  </div>
+  <div id="div-2" class="flex-items">
+    <p>If you've sold out, <b><%= link_to "sign in.", login_path %></b></p>
+  </div>
+  </section>
+
+    </div>
+  </body>
+</html>

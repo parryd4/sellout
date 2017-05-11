@@ -1,13 +1,20 @@
-<%= form_for :user, url: '/users' do |f| %>
-Username: <%= f.text_field :username %><br>
-<br>
-Password: <%= f.password_field :password %><br>
-<br>
-Password Confirmation: <%= f.password_field :password_confirmation %><br>
-<br>
-Tell us about yourself, sellout. <%= f.text_area :bio %><br>
-<br>
-Where are you located? <%= f.text_field :location %> <br>
-<br>
-<%= f.submit "Begin Your Sellout Journey--and make the world a better place!" %>
-<% end %>
+<div id="user-new" class="container-fluid bg-grey">
+  <h2 class="text-center"><%= image_tag asset_path 'signupandsellout.png' %></h2>
+  <div class="row">
+    <div class="text-center">
+                <%= form_for :user, url: '/users' do |f| %>
+              <div class= "col-sm-4">  <p><strong><%= f.text_field :username, placeholder: "Username", size: 30 %></p>
+                  <p><strong><%= f.text_field :first_name, placeholder: "First Name", size: 30 %></p>
+                  <p><strong><%= f.text_field :last_name, placeholder: "Last Name", size: 30 %></p>
+                  <p><strong><%= f.password_field :password, placeholder: "password", size: 30 %></p>
+                  <p><strong><%= f.password_field :password_confirmation, placeholder: "password confirm", size: 30 %></p>
+                  <p><strong><%= f.text_field :location, placeholder: "What's your location?", size: 30 %> </p>
+                  </div>
+                  <p><strong><%= f.text_area :bio, placeholder: "Tell us about yourself, sellout.", cols: 60, rows:6 %></p><br>
+
+                  <%= f.submit "Begin Your Sellout Journey--and make the world a better place!", size: 60 %>
+                  <% end %>
+                  <br>
+    </div>
+  </div>
+</div>
