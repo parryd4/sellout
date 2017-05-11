@@ -7,7 +7,7 @@
     margin-top: 3%;
     background: #222;
     background:rgba(255,255,255,0.7);  /* grey with opacity */
-    color: #000;
+    color: #aaa;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 300;
     font-size: 1.25em;
@@ -17,6 +17,24 @@
     height: auto;
     margin-left: auto;
     margin-right: auto;
+    flex-wrap: wrap;
+}
+
+.box {
+  display: inline-block;
+  /*width: 300px;*/
+  height: 300px;
+  margin: 1em;
+  overflow: hidden;
+  background-color: black;
+}
+
+.image_responsive {
+  display: block;
+  height: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
 }
 
 
@@ -28,12 +46,25 @@
 
 <section id="art-content" class="flex-container">
 
-<ul>
+     <% @arts.each do |art| %>
+        <div class="box">
+          <image class="image_responsive" src="<%= art.picture_url %>" if art.picture.present? %>
+              <div class="box2">
+                  <%= link_to art.title, art_path(art) %> by
+                  <%= link_to art.user.username, user_path(art.user) %>
+                  <strong><%= art.price %></strong>
+              </div>
+      </div>
+    <% end %>
+  </div>
+
+
+<!-- <ul>
   <% @arts.each do |art| %>
     <li><strong><%= link_to art.title, art_path(art) %> - <%= link_to art.user.username, user_path(art.user) %></strong></li>
   <% end %>
 </ul>
 <br>
-<strong><%= link_to "New Art", new_art_path %></strong>
+<strong><%= link_to "New Art", new_art_path %></strong> -->
 
 </section>
