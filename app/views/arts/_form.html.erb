@@ -6,6 +6,10 @@
   <%= f.label "Description" %>
   <%= f.text_field :description %><br>
   <%= f.hidden_field :user_id, value: session[:user_id] %>
+
   <%= f.collection_select :category_id, Category.all, :id, :name %>
+
+  <%= f.file_field :picture %>
+
 <%= f.submit %>
 <% end %>
