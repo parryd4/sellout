@@ -6,8 +6,8 @@
     /*align-items:center;*/
     margin-top: 3%;
     background: #222;
-    background:rgba(0,0,0,0.2);  /* grey with opacity */
-    color: #fff;
+    background:rgba(255,255,255,0.7);  /* grey with opacity */
+    color: #000;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 300;
     font-size: 1.25em;
@@ -19,20 +19,21 @@
     margin-right: auto;
 }
 
+
 </style>
 
 
 
 <h2 class="text-center"><%= image_tag asset_path 'artforbid.png' %></h2>
 
-<section id="other-content" class="flex-container">
+<section id="art-content" class="flex-container">
 
 <ul>
   <% @arts.each do |art| %>
-    <li><%= link_to art.title, art_path(art) %> - <%= link_to art.user.username, user_path(art.user) %></li>
+    <li><strong><%= link_to art.title, art_path(art) %> - <%= link_to art.user.username, user_path(art.user) %></strong></li>
   <% end %>
 </ul>
 <br>
-<%= link_to "New Art", new_art_path %>
+<strong><%= link_to "New Art", new_art_path %></strong>
 
 </section>

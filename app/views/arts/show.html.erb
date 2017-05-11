@@ -1,3 +1,4 @@
+
 <%= flash[:notice] %>
 <h1><%= @art.title %></h1>
 
@@ -47,4 +48,125 @@
 
 <% end %>
 
-<p><%= link_to 'Back', arts_path %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sellout.</title>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500" rel="stylesheet">
+
+
+    <style>
+    h1, h2 {
+      font-family: Lobster;
+      font-size: 50px;
+      font-style: normal;
+      font-variant: normal;
+      font-weight: 500;
+      line-height: 26.4px;
+    }
+
+    .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 3%;
+        background: #222;
+        background:rgba(255,255,255,0.7);  /* grey with opacity */
+        color: #000;
+        /*font-family: 'Source Sans Pro', sans-serif;*/
+        /*font-weight: 300;*/
+        /*font-size: 1.25em;*/
+        border-radius: 10px;
+        padding: 10px 10px;
+        width: 80%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .flex-container-other {
+        /*display: flex;*/
+        justify-content: left;
+        align-items: left;
+        margin-top: 3%;
+        background: #222;
+        background:rgba(255,255,255,0.7);  /* grey with opacity */
+        color: #000;
+        /*font-family: 'Source Sans Pro', sans-serif;*/
+        /*font-weight: 300;*/
+        /*font-size: 1.25em;*/
+        border-radius: 10px;
+        padding: 10px 10px;
+        width: 80%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .logo{
+      display: flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    #labels {
+      color: #808080
+    }
+
+    </style>
+  </head>
+  <body>
+
+    <section id="logo" class="logo">
+    <%=image_tag "sellout_logo.png" %>
+    </section>
+
+<section class="flex-container">
+  <ul>
+    <h1><%= @art.title %></h1>
+    <h2>By: <%= link_to @art.user.username, user_path(@art.user) %></h2>
+    <p><div id="labels">Category: </div><%= @art.category.name %>
+
+    <h3><div id="labels">Price:</div> <%= @art.price %> <%= link_to "Place Bid", new_art_transaction_path(@art) %></h3><br>
+
+    <label><div id="labels">Description</div></label>
+    <h3><%= @art.description %></h3>
+    <% if @art.user_id == session[:user_id] %>
+      <%= link_to 'Edit', edit_art_path(@art) %>
+    <% end %>
+
+
+    <label>New Comment</label>
+    <%= form_for Comment.new do |f| %>
+    <%= f.text_area :content %>
+    <%= f.hidden_field :art_id, value: @art.id %>
+    <%= f.hidden_field :user_id, value: session[:user_id] %>
+    <%= f.submit 'Post Comment' %>
+    <% end %>
+    <br>
+    <h3><%= link_to 'Back', arts_path %></h3>
+  </ul>
+</section>
+
+<section class="flex-container-other">
+    <h2>Comments</h2>
+    <% @art.comments.each do |comment| %>
+      <p>
+        <%= link_to comment.user.username, user_path(comment.user) %> said... <br>
+        <%= comment.content %>
+        <% if session[:user_id] == comment.user_id %>
+          <%= link_to 'Delete', comment_path(comment), method: 'delete' %>
+        <% end %>
+      </p>
+    <% end %>
+
+  </section>
+
+
+
+  </body>
+</html>
