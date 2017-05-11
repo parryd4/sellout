@@ -38,9 +38,8 @@ ActiveRecord::Schema.define(version: 20170509160007) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.integer "artist_id"
     t.integer "art_id"
-    t.integer "bidder_id"
+    t.integer "user_id"
     t.float "bid_price"
     t.string "status", default: "Pending"
     t.datetime "created_at", null: false

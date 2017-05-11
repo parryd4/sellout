@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :categories, only: [:index, :show]
 
+
   root( 'welcome#index' )
 
   get '/login', to: 'sessions#new', as: 'login'

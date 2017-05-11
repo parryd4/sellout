@@ -1,5 +1,15 @@
 <h1><%= @user.username %></h1>
 
+<% if @user.pending_transactions.size > 0 %>
+  <h2>Pending Transactions Awaiting Approval!</h2>
+  <% @user.pending_transactions.each do |trans| %>
+  <p>
+    <%= link_to "#{trans.user.username} bid $#{trans.bid_price} on  #{trans.art.title}", art_transaction_path(trans) %>
+  </p>
+  <% end %>
+
+<% end %>
+
 <h2>AKA <%= @user.first_name %> <%= @user.last_name %></h2>
 <p>Selling Out from: <%= @user.location %></p>
 <h3>About Me</h3>

@@ -1,7 +1,7 @@
 class ArtsController < ApplicationController
 
   def index
-    @arts = Art.all
+    @arts = Art.all.reverse
   end
 
   def show
