@@ -62,15 +62,14 @@
 
     .navbar-brand {
         color: #FFF !important;
-
-
     }
+
     .navbar-nav li.active a {
         color: #818181 !important;
         background-color: #fff !important;
     }
     .navbar-nav li a:hover{
-      background-color: #00cc99 !important;
+      background-color: #53c462 !important;
     }
     .navbar-default .navbar-toggle {
         border-color: transparent;
@@ -80,6 +79,7 @@
     #icon {
       width: 20%;
     }
+
 
       /* Add a gray background color and some padding to the footer */
       footer {
@@ -121,8 +121,14 @@
           <ul class="nav navbar-nav">
             <li><a href="/arts">View Art</a></li><!--HOME PAGE -->
             <!-- <li><a href= "arts/about">About SellOut</a></li> -->
-            <li><a href="/login">Login</a></li>
-            <li><a href="users/new">Sign Up</a></li>
+            <li><%= link_to "All Users", users_path %></li>
+            <li><%= link_to "All Categories", categories_path %></li>
+            <% if logged_in? %>
+                <li><%= link_to "Logout", logout_path, method: "delete" %></li>
+                <% else %>
+                  <li><%= link_to "Login", login_path %></li>
+                  <li><%= link_to "Sign Up", new_user_path %></li>
+                  <%end%>
           </ul>
           <ul class="nav navbar-nav navbar-right">
     <!--Login Icon        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -144,12 +150,5 @@
       <%= link_to 'Login', login_path %>
     <% end %><br><br><br> -->
     <%= yield %>
-
-    <br><br>
-    <h2>
-      <%= link_to "ARTS", arts_path %>
-      <%= link_to "USERS", users_path %>
-      <%= link_to "CATEGORIES", categories_path %>
-    </h2>
   </body>
 </html>
