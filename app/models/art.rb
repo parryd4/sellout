@@ -1,4 +1,5 @@
 class Art < ApplicationRecord
+  mount_uploader :picture, PictureUploader
 #  has_many :transactions
 #  has_many :users, through: :transactions
   has_many :comments

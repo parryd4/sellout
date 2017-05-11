@@ -79,7 +79,8 @@
   <ul>
     <%= flash[:notice] %>
     <h1><%= @art.title %></h1>
-    <h2>By: <%= link_to @art.user.username, user_path(@art.user) %></h2>
+    <h2>By: <%= link_to @art.user.username, user_path(@art.user) %></h2><br>
+    <%= image_tag @art.picture_url, width: 500 if @art.picture.present? %>
     <p><div id="labels">Category: </div><%= @art.category.name %>
 
     <h3><div id="labels">Price:</div> <%= @art.price %> <%= link_to "Place Bid", new_art_transaction_path(@art) %></h3><br>
