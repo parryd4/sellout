@@ -51,7 +51,7 @@ count = 0
     description: Faker::Hipster.paragraph(2,true,1),
     user_id: random_user_id,
     category_id: random_category_id,
-    image_url: "#{count % 5}.jpg"
+    image: "#{count % 5}.jpg"
   )
   count += 1
 }
