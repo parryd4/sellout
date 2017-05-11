@@ -2,19 +2,149 @@
 <html>
   <head>
     <title>Sellout</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500" rel="stylesheet">
+    <style>
+      /* Remove the navbar's default margin-bottom and rounded borders */
+      body {
+        font: 400 15px Lato, sans-serif;
+        line-height: 1.8;
+        color: #333333;
+        background: url(<%= asset_path 'raphael-koh-116525.jpg' %>) no-repeat center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    h1 {
+      padding: 20px;
+    }
+    h2, {
+        font-size: 24px;
+        text-transform: uppercase;
+        color: #303030;
+        font-weight: 600;
+        margin-bottom: 30px;
+        margin-left: 20px;
+        padding: 20px;
+    }
+    h4 {
+        font-size: 19px;
+        line-height: 1.375em;
+        color: #303030;
+        font-weight: 400;
+        margin-bottom: 30px;
+        padding: 20px;
+    }
+    p {
+      padding: 20px;
+    }
+    .navbar {
+        margin-bottom: 0;
+        background-color: #818181;
+        z-index: 9999;
+        border: 0;
+        font-size: 12px !important;
+        line-height: 1.42857143 !important;
+        letter-spacing: 4px;
+        border-radius: 0;
+        font-family: 'Raleway', sans-serif;
+    }
+    .navbar li a, .navbar  {
+        color: #FFF !important;
+    }
+
+    .navbar-brand {
+        color: #FFF !important;
+
+
+    }
+    .navbar-nav li.active a {
+        color: #818181 !important;
+        background-color: #fff !important;
+    }
+    .navbar-nav li a:hover{
+      background-color: #00cc99 !important;
+    }
+    .navbar-default .navbar-toggle {
+        border-color: transparent;
+        color: #fff !important;
+    }
+
+    #icon {
+      width: 20%;
+    }
+
+      /* Add a gray background color and some padding to the footer */
+      footer {
+        background-color: #f2f2f2;
+        padding: 25px;
+      }
+
+    /* Hide the carousel text when the screen is less than 600 pixels wide */
+    @media (max-width: 600px) {
+      .carousel-caption {
+        display: none;
+      }
+    }
+    </style>
+
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% if logged_in? %>
-      <p>Hello <%= link_to current_user.first_name, user_path(current_user) %>! Click here to <%= link_to "Log Out", logout_path, method: 'delete' %></p>
+  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/arts">
+
+
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="/arts">View Art</a></li><!--HOME PAGE -->
+            <!-- <li><a href= "arts/about">About SellOut</a></li> -->
+            <li><a href="/login">Login</a></li>
+            <li><a href="users/new">Sign Up</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+    <!--Login Icon        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    commented out until "login" for clients and employees can be created.
+    -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+
+
+<!--Ruby stuff -->
+    <!-- <% if logged_in? %>
+      <p>Hello! <%= link_to current_user.username, user_path(current_user) %>. Click here to <%= link_to "Log Out", logout_path, method: 'delete' %></p>
+>>>>>>> beautifying our shiz
     <% else %>
       <%= link_to 'Login', login_path %>
-    <% end %><br><br><br>
+    <% end %><br><br><br> -->
     <%= yield %>
+
     <br><br>
     <h2>
       <%= link_to "ARTS", arts_path %>
