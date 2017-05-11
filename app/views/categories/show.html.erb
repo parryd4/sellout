@@ -1,0 +1,9 @@
+<h2>
+  Showing All Arts in Category: <%= @category.name %>
+</h2>
+
+<% @arts.each do |art| %>
+  <p>
+    <%= link_to art.title, art %> by <%= link_to art.user.username, user_path(art.user_id) %>
+  </p>
+<% end %>

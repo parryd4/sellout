@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :transactions
   end
   resources :users
+  resources :categories, only: [:index, :show]
 
   root( 'welcome#index' )
 
