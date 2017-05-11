@@ -24,8 +24,12 @@ class ArtsController < ApplicationController
 
   def update
     @art = Art.find(params[:id])
-    @art.update(art_params)
-    redirect_to art_path(@art)
+    if @art.update(art_params)
+      flash[:notice] = "Successfully Updated Details"
+      redirect_to art_path(@art)
+    else
+      render :edit
+    end
   end
 
   private
