@@ -1,3 +1,14 @@
+<style>
+
+  .upload {
+    display: flex;
+    align-items: right;
+    position: relative;
+    justify-content: center;
+  }
+
+</style>
+
 <div id="user-new" class="container-fluid bg-grey">
   <h2 class="text-center"><%= image_tag asset_path 'signupandsellout.png' %></h2>
   <div class="row">
@@ -11,8 +22,11 @@
                   <p><strong><%= f.text_field :location, placeholder: "What's your location?", size: 30 %> </p>
                   </div>
                   <p><strong><%= f.text_area :bio, placeholder: "Tell us about yourself, sellout.", cols: 60, rows:6 %></p><br>
-
-                  <%= f.submit "Begin Your Sellout Journey--and make the world a better place!", size: 60 %>
+                    <p><strong>Profile Picture:</p>
+                  <div class="upload">
+                    <%= f.file_field :picture %>
+                  </div><br>
+                  <%= f.submit "Begin Your Sellout Journey", size: 60 %>
                   <% end %>
                   <br>
     </div>

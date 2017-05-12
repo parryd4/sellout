@@ -54,7 +54,7 @@
         line-height: 1.42857143 !important;
         letter-spacing: 4px;
         border-radius: 0;
-        font-family: 'Lobster', sans-serif;
+        font-family: 'Raleway', sans-serif;
     }
     .navbar li a, .navbar  {
         color: #FFF !important;
@@ -124,6 +124,7 @@
             <li><%= link_to "All Users", users_path %></li>
             <li><%= link_to "All Categories", categories_path %></li>
             <% if logged_in? %>
+                <li><%= link_to "My Profile", user_path(current_user.id) %></li>
                 <li><%= link_to "Logout", logout_path, method: "delete" %></li>
                 <% else %>
                   <li><%= link_to "Login", login_path %></li>

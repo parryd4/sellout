@@ -48,7 +48,7 @@
 
      <% @arts.each do |art| %>
         <div class="box">
-          <image class="image_responsive" src="<%= art.picture_url %>" if art.picture.present? %>
+          <image class="image_responsive" src="<%= art.picture_url %>">
               <div class="box2">
                   <%= link_to art.title, art_path(art) %> by
                   <%= link_to art.user.username, user_path(art.user) %>
