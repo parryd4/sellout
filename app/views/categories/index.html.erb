@@ -1,5 +1,4 @@
 <h1>All Categories</h1>
-<p>Total: <%= @categories.size %></p>
 <% @categories.each do |cat| %>
   <%= link_to cat.name, cat %><br>
 <% end %>

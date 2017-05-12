@@ -14,8 +14,12 @@ class ArtsController < ApplicationController
   end
 
   def create
-    @art = Art.create(art_params)
-    redirect_to arts_path
+    @art = Art.new(art_params)
+    if @art.save
+      redirect_to user_path(@art.user)
+    else
+      render :new
+    end
   end
 
   def edit

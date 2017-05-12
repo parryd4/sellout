@@ -1,4 +1,5 @@
 class Art < ApplicationRecord
+  validates :picture, presence: true
 
   has_many :transactions
 
