@@ -74,6 +74,11 @@
       text-align: center;
     }
 
+    .alert {
+      color: rgba(100,200,115, 1);
+      text-shadow: 2px 2px black;
+    }
+
     </style>
   </head>
   <body>
@@ -84,12 +89,14 @@
 
 
     <section id="content" class="flex-container">
-      <% if @user.pending_transactions.size > 0 %>
-        <h2>Pending Transactions Awaiting Approval!</h2>
-        <% @user.pending_transactions.each do |trans| %>
+      <% if current_user == @user && @user.pending_transactions.size > 0 %>
+        <h2 class='alert'>You've got Bids!</h2>
+        <% @user.arts.each do |art| %>
+          <% if art.transactions.last.present? %>
         <p>
-          <%= link_to "#{trans.user.username} bid $#{trans.bid_price} on  #{trans.art.title}", art_transaction_path(trans) %>
+          <%= link_to "#{art.transactions.last.user.username} bid $#{art.price} on #{art.title}", art_transaction_path(art.transactions.last) %>
         </p>
+        <% end %>
         <% end %>
 
       <% end %>

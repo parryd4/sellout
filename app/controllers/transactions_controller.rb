@@ -8,8 +8,8 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.create(transaction_params)
-    # @transaction.art.price = @transaction.bid_price
-    # @transaction.art.save
+    @transaction.art.price = @transaction.bid_price
+    @transaction.art.save
     redirect_to art_path(@transaction.art_id)
   end
 

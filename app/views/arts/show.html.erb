@@ -67,6 +67,10 @@
       color: #808080
     }
 
+    p.highestbidder a {
+      color: red;
+    }
+
     </style>
   </head>
   <body>
@@ -85,16 +89,20 @@
     <% else %>
       <%= image_tag @art.image, width: 500 %>
       <% end %>
-    <p><div id="labels">Category: </div><%= @art.category.name %>
+    <p></div><%= link_to @art.category.name, category_path(@art.category) %> by <%= link_to @art.user.username, user_path(@art.user) %><br>
 
-    <h3><div id="labels">Price:</div> <%= @art.price %> <%= link_to "Place Bid", new_art_transaction_path(@art) %></h3><br>
-
-    <label><div id="labels">Description</div></label>
-    <h3><%= @art.description %></h3>
-    <% if @art.user_id == session[:user_id] %>
-      <%= link_to 'Edit', edit_art_path(@art) %>
+    <% if current_user != @art.user %>
+      <h3><div id="labels">Price:</div> <%= @art.price %> <%= link_to "Place Bid", new_art_transaction_path(@art) %></h3>
+    <% elsif current_user == @art.user %>
+      <h3><div id="labels">Price:</div> <%= @art.price %></h3><p class="highestbidder">Current highest bidder: <%= link_to @art.transactions.last.user.username, user_path(@art.transactions.last.user) if @art.transactions.last.present? %></p>
     <% end %>
+    <!-- <%= link_to @art.transactions.last.user.username, user_path(@art.transactions.last.user) if @art.transactions.last.present? %> -->
 
+    <!-- <label><div id="labels">Description:</div></label><br> -->
+    <%= @art.description %><br>
+    <% if @art.user_id == session[:user_id] %>
+      <%= link_to '(Edit)', edit_art_path(@art) %><br><br>
+    <% end %>
 
     <label>New Comment</label>
     <%= form_for Comment.new do |f| %>
