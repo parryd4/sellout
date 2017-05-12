@@ -6,7 +6,7 @@ class CreateArts < ActiveRecord::Migration[5.1]
       t.text :description
       t.integer :user_id
       t.integer :category_id
-      t.string :image_url
+      t.string :image
 
       t.timestamps
     end
